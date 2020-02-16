@@ -1,0 +1,75 @@
+{
+    "pages": [{
+            "path": "pages/main/index",
+            "style": {
+                "navigationBarTitleText": "InPanel"
+            }
+        },
+        {
+            "path": "pages/files/index",
+            "style": {
+                "navigationBarTitleText": "文件管理"
+            }
+        },
+        {
+            "path": "pages/service/index",
+            "style": {
+                "navigationBarTitleText": "服务管理"
+            }
+        },
+        {
+            "path": "pages/utils/index",
+            "style": {
+                "navigationBarTitleText": "系统工具"
+            }
+        },
+        {
+            "path": "pages/settings/index",
+            "style": {
+                "navigationBarTitleText": "设置"
+            }
+        }, {
+            "path": "pages/about/index",
+            "style": {
+                "navigationBarTitleText": "关于"
+            }
+        }
+    ],
+    "tabBar": {
+        "color": "#7a7e83",
+        "selectedColor": "#0faeff",
+        "backgroundColor": "#ffffff",
+        "list": [{
+            "pagePath": "pages/main/index",
+            "text": "首页",
+            "iconPath": "static/img/home.png",
+            "selectedIconPath": "static/img/homeHL.png"
+        }, {
+            "pagePath": "pages/files/index",
+            "text": "文件",
+            "iconPath": "static/img/user.png",
+            "selectedIconPath": "static/img/userHL.png"
+        }, {
+            "pagePath": "pages/service/index",
+            "text": "服务",
+            "iconPath": "static/img/user.png",
+            "selectedIconPath": "static/img/userHL.png"
+        }, {
+            "pagePath": "pages/utils/index",
+            "text": "工具",
+            "iconPath": "static/img/user.png",
+            "selectedIconPath": "static/img/userHL.png"
+        }, {
+            "pagePath": "pages/settings/index",
+            "text": "设置",
+            "iconPath": "static/img/user.png",
+            "selectedIconPath": "static/img/userHL.png"
+        }]
+    },
+    "globalStyle": {
+        "navigationBarTitleText": "InPanel",
+        "navigationBarTextStyle": "white",
+        "navigationBarBackgroundColor": "#0faeff",
+        "backgroundColor": "#fbf9fe"
+    }
+}
