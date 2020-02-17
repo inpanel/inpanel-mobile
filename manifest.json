@@ -60,9 +60,10 @@
     "quickapp" : {},
     /* 小程序特有相关 */
     "mp-weixin" : {
-        "appid" : "",
+        "appid" : "wxa1f4df67608cb99f",
         "setting" : {
-            "urlCheck" : false
+            "urlCheck" : false,
+            "minified" : true
         },
         "usingComponents" : true
     },
@@ -76,6 +77,9 @@
         "usingComponents" : true
     },
     "h5" : {
-        "title" : "InPanel"
+        "title" : "InPanel",
+        "router" : {
+            "mode" : "history"
+        }
     }
 }

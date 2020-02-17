@@ -1,10 +1,24 @@
 <template>
     <view class="content no-padding">
         <uni-section title="系统工具合集" type="line"></uni-section>
-        <uni-collapse v-for="(item, index) in nav_list" :key="index">
-            <uni-collapse-item :title="item.title" :showAnimation="true">
-                <uni-list v-for="(nav, indx) in item.navs" :key="indx">
-                    <uni-list-item :title="nav.title" :note="nav.note" :show-arrow="nav.show_arrow"></uni-list-item>
+        <uni-collapse :accordion="true">
+            <uni-collapse-item v-for="(item, index) in nav_list" :key="index" :title="item.title" :showAnimation="true">
+                <uni-list>
+                    <navigator open-type="navigate" v-for="(nav, indx) in item.navs"
+                        :key="indx"
+                        :url="nav.path">
+                        <uni-list-item
+                            :title="nav.title"
+                            :note="nav.note"
+                            :show-arrow="nav.show_arrow">
+                        </uni-list-item>
+                    </navigator>
+                </uni-list>
+            </uni-collapse-item>
+            <uni-collapse-item title="服务器">
+                <uni-list>
+                    <uni-list-item title="服务器重启" note="重启您的服务器" :show-arrow="false" @tap="bindRestartServer">
+                    </uni-list-item>
                 </uni-list>
             </uni-collapse-item>
         </uni-collapse>
@@ -137,16 +151,6 @@
                                 show_arrow: true
                             }
                         ]
-                    }, {
-                        title: '服务器',
-                        navs: [
-                            {
-                                title: '服务器重启',
-                                note: '重启您的服务器',
-                                path: '',
-                                show_arrow: false
-                            }
-                        ]
                     }
                 ]
             }
@@ -162,7 +166,17 @@
 
         },
         methods: {
-
+            bindRestartServer () {
+                uni.showModal({
+                    title: "服务器重启确认",
+                    content: "重启过程中，您的服务器将会持续中断服务！确认要重启服务器吗？",
+                    confirmText: "确认重启",
+                    cancelText: "取消",
+                    success: (res) => {
+                        console.log(res)
+                    }
+                })
+            },
         }
     }
 </script>

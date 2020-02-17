@@ -28,6 +28,30 @@
             "style": {
                 "navigationBarTitleText": "设置"
             }
+        },
+        {
+            "path": "pages/settings/authinfo",
+            "style": {
+                "navigationBarTitleText": "登录设置"
+            }
+        },
+        {
+            "path": "pages/settings/serverinfo",
+            "style": {
+                "navigationBarTitleText": "服务设置"
+            }
+        },
+        {
+            "path": "pages/settings/accesskey",
+            "style": {
+                "navigationBarTitleText": "远程控制"
+            }
+        },
+        {
+            "path": "pages/settings/upversion",
+            "style": {
+                "navigationBarTitleText": "版本升级"
+            }
         }, {
             "path": "pages/about/index",
             "style": {

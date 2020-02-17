@@ -3,7 +3,10 @@
         <view class="about">
             <view class="qrcode">
                 <image src="/static/img/logo.png" @longtap="save"></image>
-                <text class="tip">InPanel Mobile Client</text>
+                <text class="tip">InPanel Mobile</text>
+                <!-- #ifdef APP-PLUS -->
+                <text class="version">{{version}}</text>
+                <!-- #endif -->
             </view>
             <view class="desc">
                 <text>InPanel Mobile 是专门为移动设备开发的客户端，为您提供便捷服务。</text>
@@ -187,7 +190,6 @@
         height: 80upx;
         line-height: 80upx;
         justify-content: center;
-        color: #ccc;
     }
 
     .source {

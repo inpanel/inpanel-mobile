@@ -4,24 +4,35 @@
             <image class="logo-img" :src="login ? uerInfo.avatarUrl :avatarUrl"></image>
             <view class="logo-title">
                 <text class="uer-name">Hi，{{login ? uerInfo.name : '您未登录'}}</text>
-                <text class="go-login navigat-arrow" v-if="!login">&#xe65e;</text>
+                <!-- <text class="go-login navigat-arrow" v-if="!login"></text> -->
+                <uni-icons class="go-login " v-if="!login" type="arrowright" size="30"></uni-icons>
             </view>
         </view>
-        <uni-section title="系统工具合集" type="circle"></uni-section>
+        <!-- <uni-section title="系统工具合集" type="line"></uni-section> -->
         <uni-list>
-            <uni-list-item title="列表左侧带略缩图" thumb="https://img-cdn-qiniu.dcloud.net.cn/new-page/uni.png" />
-            <uni-list-item :show-extra-icon="true" :extra-icon="icons.compose" title="帐号管理" />
-            <uni-list-item :show-extra-icon="true" :extra-icon="icons.compose" title="新消息通知" badge-text="12" />
-        </uni-list>
-        <uni-section title="帮助" type="circle"></uni-section>
-        <uni-list>
-            <uni-list-item :show-extra-icon="true" :extra-icon="icons.compose" title="帮助与反馈" rightText="右侧文字" />
-            <uni-list-item :show-extra-icon="true" :extra-icon="icons.compose" title="服务条款及隐私" />
+            <navigator url="/pages/settings/authinfo" open-type="navigate">
+                <uni-list-item  title="登录设置" />
+            </navigator>
+            <navigator url="/pages/settings/serverinfo" open-type="navigate">
+                <uni-list-item title="服务设置" badge-text="12" />
+            </navigator>
+            <navigator url="/pages/settings/accesskey" open-type="navigate">
+                <uni-list-item title="远程控制" rightText="右侧文字" />
+            </navigator>
+            <navigator url="/pages/settings/upversion" open-type="navigate">
+                <uni-list-item :show-extra-icon="true" :extra-icon="icons.compose" title="版本升级" />
+            </navigator>
+            <uni-list-item :show-extra-icon="true" :extra-icon="icons.compose" title="重启服务" @tap="bindRestart" />
         </uni-list>
         <view class="center-list">
             <uni-list>
-                <uni-list-item :show-extra-icon="true" :extra-icon="icons.info" title="关于应用" @click="toAbout" />
+                <navigator url="/pages/about/index" open-type="navigate">
+                    <uni-list-item :show-extra-icon="true" :extra-icon="icons.info" title="关于应用" />
+                </navigator>
             </uni-list>
+        </view>
+        <view class="btn-row">
+            <button type="primary" @tap="bindLogout">退出登录</button>
         </view>
     </view>
 </template>
@@ -30,12 +41,14 @@
     import uniSection from '@/components/uni-section/uni-section.vue'
     import uniList from '@/components/uni-list/uni-list.vue'
     import uniListItem from '@/components/uni-list-item/uni-list-item.vue'
+    import uniIcons from "@/components/uni-icons/uni-icons.vue"
     export default {
-		components: {
-			uniSection,
-			uniList,
-			uniListItem
-		},
+        components: {
+            uniSection,
+            uniList,
+            uniListItem,
+            uniIcons
+        },
         data() {
             return {
                 login: false,
@@ -43,26 +56,16 @@
                 uerInfo: {},
                 icons: {
                     compose: {
-                    	color: '#007aff',
-                    	size: '22',
-                    	type: 'compose'
+                        color: '#007aff',
+                        size: '22',
+                        type: 'compose'
                     },
                     info: {
-                    	color: '#007aff',
-                    	size: '22',
-                    	type: 'info-filled'
+                        color: '#007aff',
+                        size: '22',
+                        type: 'info-filled'
                     },
-                },
-				extraIcon1: {
-					color: '#007aff',
-					size: '22',
-					type: 'gear-filled'
-				},
-				extraIcon2: {
-					color: '#4cd964',
-					size: '22',
-					type: 'image'
-				}
+                }
             }
         },
         methods: {
@@ -71,17 +74,33 @@
                     console.log("点击前往登录")
                 }
             },
-            toAbout () {
+            toAbout() {
                 uni.navigateTo({
                     url: '/pages/about/index'
                 });
             },
-			switchChange(e) {
-				uni.showToast({
-					title: 'change:' + e.value,
-					icon: 'none'
-				})
-			},
+            bindRestart() {
+                uni.showModal({
+                    title: "重启服务",
+                    content: "是否要重启 InPanel ？",
+                    confirmText: "确定",
+                    cancelText: "取消",
+                    success: (res) => {
+                        console.log(res)
+                    }
+                })
+            },
+            bindLogout () {
+                uni.showModal({
+                    title: "提示",
+                    content: "是否要退出登录",
+                    confirmText: "确定",
+                    cancelText: "取消",
+                    success: (res) => {
+                        console.log(res)
+                    }
+                })
+            },
         }
     }
 </script>
@@ -99,10 +118,10 @@
         display: flex;
     }
 
-   /* page {
+    /* page {
         background-color: #f8f8f8;
     } */
-/* 
+    /* 
     .center {
         flex-direction: column;
     }
@@ -143,11 +162,12 @@
         color: #FFFFFF;
     }
 
+    /* 
     .go-login.navigat-arrow {
         font-size: 38upx;
         color: #FFFFFF;
     }
-
+ */
     .login-title {
         height: 150upx;
         align-items: self-start;
@@ -197,7 +217,7 @@
         text-align: left;
     }
 
-    .navigat-arrow {
+    /* .navigat-arrow {
         height: 90upx;
         width: 40upx;
         line-height: 90upx;
@@ -205,5 +225,5 @@
         color: #555;
         text-align: right;
         font-family: texticons;
-    }
+    } */
 </style>
