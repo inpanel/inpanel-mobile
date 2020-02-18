@@ -1,38 +1,45 @@
 <template>
     <view class="content no-padding">
-        <view class="logo" @click="goLogin" :hover-class="!login ? 'logo-hover' : ''">
+        <!-- <view class="logo" @click="goLogin" :hover-class="!login ? 'logo-hover' : ''">
             <image class="logo-img" :src="login ? uerInfo.avatarUrl :avatarUrl"></image>
             <view class="logo-title">
                 <text class="uer-name">Hi，{{login ? uerInfo.name : '您未登录'}}</text>
-                <!-- <text class="go-login navigat-arrow" v-if="!login"></text> -->
+                <text class="go-login navigat-arrow" v-if="!login"></text>
                 <uni-icons class="go-login " v-if="!login" type="arrowright" size="30"></uni-icons>
             </view>
-        </view>
+        </view> -->
         <!-- <uni-section title="系统工具合集" type="line"></uni-section> -->
-        <uni-list>
-            <navigator url="/pages/settings/authinfo" open-type="navigate">
-                <uni-list-item  title="登录设置" />
-            </navigator>
-            <navigator url="/pages/settings/serverinfo" open-type="navigate">
-                <uni-list-item title="服务设置" badge-text="12" />
-            </navigator>
-            <navigator url="/pages/settings/accesskey" open-type="navigate">
-                <uni-list-item title="远程控制" rightText="右侧文字" />
-            </navigator>
-            <navigator url="/pages/settings/upversion" open-type="navigate">
-                <uni-list-item :show-extra-icon="true" :extra-icon="icons.compose" title="版本升级" />
-            </navigator>
-            <uni-list-item :show-extra-icon="true" :extra-icon="icons.compose" title="重启服务" @tap="bindRestart" />
-        </uni-list>
+        <view class="center-list">
+            <uni-list>
+                <navigator url="/pages/settings/authinfo" open-type="navigate">
+                    <uni-list-item title="登录设置" />
+                </navigator>
+                <navigator url="/pages/settings/serverinfo" open-type="navigate">
+                    <uni-list-item title="服务设置" badge-text="12" />
+                </navigator>
+                <navigator url="/pages/settings/accesskey" open-type="navigate">
+                    <uni-list-item title="远程控制" rightText="右侧文字" />
+                </navigator>
+                <navigator url="/pages/settings/upversion" open-type="navigate">
+                    <uni-list-item title="版本升级" />
+                </navigator>
+                <uni-list-item title="重启服务" @tap="bindRestart" />
+            </uni-list>
+        </view>
         <view class="center-list">
             <uni-list>
                 <navigator url="/pages/about/index" open-type="navigate">
-                    <uni-list-item :show-extra-icon="true" :extra-icon="icons.info" title="关于应用" />
+                    <uni-list-item title="关于" />
+                </navigator>
+                <navigator url="/pages/feedback/index" open-type="navigate">
+                    <uni-list-item title="问题反馈" />
                 </navigator>
             </uni-list>
         </view>
-        <view class="btn-row">
-            <button type="primary" @tap="bindLogout">退出登录</button>
+        <view class="center-list">
+            <uni-list>
+                <uni-list-item class="text-center" title="退出登录" @tap="bindLogout" :showArrow="false" />
+            </uni-list>
         </view>
     </view>
 </template>
@@ -53,19 +60,7 @@
             return {
                 login: false,
                 avatarUrl: "/static/img/user1.png",
-                uerInfo: {},
-                icons: {
-                    compose: {
-                        color: '#007aff',
-                        size: '22',
-                        type: 'compose'
-                    },
-                    info: {
-                        color: '#007aff',
-                        size: '22',
-                        type: 'info-filled'
-                    },
-                }
+                uerInfo: {}
             }
         },
         methods: {
@@ -90,7 +85,7 @@
                     }
                 })
             },
-            bindLogout () {
+            bindLogout() {
                 uni.showModal({
                     title: "提示",
                     content: "是否要退出登录",

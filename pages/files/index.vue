@@ -1,12 +1,13 @@
 <template>
     <view class="content no-padding">
-        <uni-list>
-            <uni-list-item v-for="(item, index) in files" :key="index"
-                :title="item.name"
-                :note="item.size"
-                :show-arrow="item.isdir">
-            </uni-list-item>
-        </uni-list>
+        <view>导航｜回收站</view>
+        <view class="content no-padding">
+            <uni-list>
+                <uni-list-item v-for="(item, index) in files" :key="index" :title="item.name" :note="item.size"
+                    :show-arrow="item.isdir">
+                </uni-list-item>
+            </uni-list>
+        </view>
     </view>
 </template>
 
@@ -18,8 +19,7 @@
         data() {
             return {
                 title: '文件管理',
-                files: [
-                    {
+                files: [{
                         "size": "4.0K",
                         "isdir": true,
                         "ctime": "2020-02-17 04:11:35",
@@ -203,9 +203,9 @@
             }
         },
         components: {
-        	uniSection,
-        	uniList,
-        	uniListItem
+            uniSection,
+            uniList,
+            uniListItem
         },
         onLoad() {
 

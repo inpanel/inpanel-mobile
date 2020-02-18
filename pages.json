@@ -6,9 +6,21 @@
             }
         },
         {
+            "path": "pages/resource/index",
+            "style": {
+                "navigationBarTitleText": "资源管理"
+            }
+        },
+        {
             "path": "pages/files/index",
             "style": {
                 "navigationBarTitleText": "文件管理"
+            }
+        },
+        {
+            "path": "pages/files/trash",
+            "style": {
+                "navigationBarTitleText": "回收站管理"
             }
         },
         {
@@ -52,10 +64,56 @@
             "style": {
                 "navigationBarTitleText": "版本升级"
             }
+        },
+        {
+            "path": "pages/feedback/index",
+            "style": {
+                "navigationBarTitleText": "问题反馈"
+            }
         }, {
             "path": "pages/about/index",
             "style": {
                 "navigationBarTitleText": "关于"
+            }
+        }, {
+            "path": "pages/site/index",
+            "style": {
+                "navigationBarTitleText": "网站"
+            }
+        }, {
+            "path": "pages/site/nginx",
+            "style": {
+                "navigationBarTitleText": "Nginx站点"
+            }
+        }, {
+            "path": "pages/site/apache",
+            "style": {
+                "navigationBarTitleText": "Apache站点"
+            }
+        }, {
+            "path": "pages/database/mysql",
+            "style": {
+                "navigationBarTitleText": "MySQL数据库"
+            }
+        }, {
+            "path": "pages/database/mariadb",
+            "style": {
+                "navigationBarTitleText": "MariaDB数据库"
+            }
+        }, {
+            "path": "pages/database/redis",
+            "style": {
+                "navigationBarTitleText": "Redis数据库"
+            }
+        }, {
+            "path": "pages/database/memcache",
+            "style": {
+                "navigationBarTitleText": "Memcache数据库"
+            }
+        }, {
+            "path": "pages/database/mongodb",
+            "style": {
+                "navigationBarTitleText": "MongoDB数据库"
             }
         }
     ],
@@ -69,8 +127,8 @@
             "iconPath": "static/img/home.png",
             "selectedIconPath": "static/img/homeHL.png"
         }, {
-            "pagePath": "pages/files/index",
-            "text": "文件",
+            "pagePath": "pages/resource/index",
+            "text": "资源",
             "iconPath": "static/img/user.png",
             "selectedIconPath": "static/img/userHL.png"
         }, {
