@@ -54,6 +54,12 @@
             }
         },
         {
+            "path": "pages/settings/settings",
+            "style": {
+                "navigationBarTitleText": "服务器授权设置"
+            }
+        },
+        {
             "path": "pages/settings/accesskey",
             "style": {
                 "navigationBarTitleText": "远程控制"

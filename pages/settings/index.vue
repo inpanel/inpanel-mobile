@@ -38,13 +38,16 @@
         </view>
         <view class="center-list">
             <uni-list>
-                <uni-list-item class="text-center" title="退出登录" @tap="bindLogout" :showArrow="false" />
+                <navigator url="/pages/settings/settings" open-type="navigate">
+                    <uni-list-item title="服务器授权设置" />
+                </navigator>
             </uni-list>
         </view>
     </view>
 </template>
 
 <script>
+    import { mapState, mapMutations } from 'vuex'
     import uniSection from '@/components/uni-section/uni-section.vue'
     import uniList from '@/components/uni-list/uni-list.vue'
     import uniListItem from '@/components/uni-list-item/uni-list-item.vue'
@@ -63,16 +66,14 @@
                 uerInfo: {}
             }
         },
+        computed: mapState(['forcedLogin', 'hasLogin', 'server']),
+        mounted() {},
         methods: {
-            goLogin() {
-                if (!this.login) {
-                    console.log("点击前往登录")
-                }
-            },
+            ...mapMutations(['server_save', 'server_clear']),
             toAbout() {
                 uni.navigateTo({
                     url: '/pages/about/index'
-                });
+                })
             },
             bindRestart() {
                 uni.showModal({
@@ -82,45 +83,54 @@
                     cancelText: "取消",
                     success: (res) => {
                         console.log(res)
+                        if (res.confirm) {
+                            this.doRestartInPanel()
+                        }
                     }
                 })
             },
-            bindLogout() {
-                uni.showModal({
-                    title: "提示",
-                    content: "是否要退出登录",
-                    confirmText: "确定",
-                    cancelText: "取消",
-                    success: (res) => {
-                        console.log(res)
+            doRestartInPanel () {
+                uni.request({
+                    method: 'POST',
+                    url: `http://${this.server.addr}:${this.server.port}/backend/service_restart`,
+                    dataType: 'json',
+                    header: {
+                        'X-ACCESS-TOKEN': this.server.token
+                    },
+                    data: {
+                        // _access: this.server.token,
+                        service: 'inpanel'
                     }
+                }).then(res => {
+                    console.log('request success', res[1])
+                    uni.showToast({
+                        title: '请求成功',
+                        icon: 'success',
+                        mask: true,
+                        duration: 2000
+                    })
+                    this.res = '请求结果 : ' + JSON.stringify(res[1])
+                    this.loading = false
+                }).catch(err => {
+                    console.log('request fail', err)
+                    uni.showModal({
+                        content: err.errMsg,
+                        showCancel: false
+                    })
+                    this.loading = false
                 })
-            },
+            }
         }
     }
 </script>
 
 <style>
-    /* @font-face {
-        font-family: texticons;
-        font-weight: normal;
-        font-style: normal;
-        src: url('https://at.alicdn.com/t/font_984210_5cs13ndgqsn.ttf') format('truetype');
-    } */
 
     page,
     view {
         display: flex;
     }
 
-    /* page {
-        background-color: #f8f8f8;
-    } */
-    /* 
-    .center {
-        flex-direction: column;
-    }
- */
     .logo {
         width: 750upx;
         height: 240upx;
@@ -212,13 +222,4 @@
         text-align: left;
     }
 
-    /* .navigat-arrow {
-        height: 90upx;
-        width: 40upx;
-        line-height: 90upx;
-        font-size: 34upx;
-        color: #555;
-        text-align: right;
-        font-family: texticons;
-    } */
 </style>

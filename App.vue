@@ -1,10 +1,45 @@
 <script>
+    import { mapState, mapMutations } from 'vuex'
+    import service from './service/service.js'
     export default {
-        onLaunch: function() {
-            console.log('App Launch');
+        data() {
+            return {}
+        },
+        computed: mapState(['forcedLogin', 'hasLogin', 'server']),
+        methods: {
+            ...mapMutations(['server_save', 'server_clear'])
+        },
+        onLaunch() {
+            console.log('App Launch', service.get_status())
+            if (service.get_status()) {
+                if (service.get_server()) {
+                    this.server_save(service.get_server())
+                }
+            }
         },
         onShow: function() {
             console.log('App Show');
+            if (!this.hasLogin) {
+                uni.showModal({
+                    title: '服务器授权设置',
+                    content: '需要设置服务器授权信息才能继续',
+                    showCancel: !this.forcedLogin,
+                    success: (res) => {
+                        if (res.confirm) {
+                            if (this.forcedLogin) {
+                                // 如果需要强制登录，使用reLaunch方式
+                                uni.reLaunch({
+                                    url: '/pages/settings/settings'
+                                })
+                            } else {
+                                uni.navigateTo({
+                                    url: '/pages/settings/settings'
+                                })
+                            }
+                        }
+                    }
+                })
+            }
         },
         onHide: function() {
             console.log('App Hide');
@@ -134,5 +169,9 @@
 
     button.primary {
         background-color: #0faeff;
+    }
+
+    .text-center {
+        text-align: center;
     }
 </style>
