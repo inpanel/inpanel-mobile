@@ -1,11 +1,8 @@
 import Vue from 'vue'
 import App from './App'
 import store from './store'
-import * as components from './components'
-
-Object.keys(components).forEach((component) => {
-    Vue.component(component, components[component])
-})
+import './components';
+// import * as components from './components'
 
 Vue.config.productionTip = false
 
