@@ -13,9 +13,6 @@
 </template>
 
 <script>
-    import uniSection from '@/components/uni-section/uni-section.vue'
-    import uniList from '@/components/uni-list/uni-list.vue'
-    import uniListItem from '@/components/uni-list-item/uni-list-item.vue'
     export default {
         data() {
             return {
@@ -77,11 +74,7 @@
                 }]
             }
         },
-        components: {
-            uniSection,
-            uniList,
-            uniListItem
-        },
+        components: {},
         onLoad() {
 
         },

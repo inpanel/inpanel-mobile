@@ -9,9 +9,11 @@
                 <!-- #endif -->
             </view>
             <view class="desc">
-                <text>InPanel Mobile 是专门为移动设备开发的客户端，为您提供便捷服务。</text>
+                <view>InPanel Mobile 是为移动设备开发的客户端</view>
+                <view>使用更方便</view>
             </view>
             <view class="source">
+                <view>源码获取方式：</view>
                 <view class="title">源码获取方式：</view>
                 <view class="source-list">
                     <view class="source-cell">
@@ -39,8 +41,6 @@
 </template>
 
 <script>
-    import uLink from "@/components/uLink.vue"
-
     export default {
         data() {
             return {
@@ -48,9 +48,7 @@
                 version: ''
             }
         },
-        components: {
-            uLink
-        },
+        components: {},
         onLoad() {
             // #ifdef APP-PLUS
             this.version = plus.runtime.version;
@@ -156,12 +154,15 @@
 </script>
 
 <style>
+    .about {}
+
     image {
         width: 300upx;
         height: 300upx;
     }
 
     .qrcode {
+        padding-top: 100upx;
         display: flex;
         align-items: center;
         flex-direction: column;
@@ -172,6 +173,7 @@
     }
 
     .desc {
+        text-align: center;
         margin-top: 30upx;
         display: block;
     }

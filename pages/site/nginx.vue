@@ -13,19 +13,11 @@
 
 <script>
     import { mapState, mapMutations } from 'vuex'
-    import uniSection from '@/components/uni-section/uni-section.vue'
-    import uniList from '@/components/uni-list/uni-list.vue'
-    import uniListItem from '@/components/uni-list-item/uni-list-item.vue'
     export default {
         data() {
             return {
                 site_list: []
             }
-        },
-        components: {
-            uniSection,
-            uniList,
-            uniListItem
         },
         computed: mapState(['forcedLogin', 'hasLogin', 'server']),
         mounted() {

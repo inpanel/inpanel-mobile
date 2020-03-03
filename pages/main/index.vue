@@ -130,23 +130,8 @@
 </template>
 
 <script>
-    import uniSegmentedControl from '@/components/uni-segmented-control/uni-segmented-control.vue'
-    import uniSection from '@/components/uni-section/uni-section.vue'
-    import uniList from '@/components/uni-list/uni-list.vue'
-    import uniListItem from '@/components/uni-list-item/uni-list-item.vue'
-    import uniIcons from "@/components/uni-icons/uni-icons.vue"
-    import uniCollapse from '@/components/uni-collapse/uni-collapse.vue'
-    import uniCollapseItem from '@/components/uni-collapse-item/uni-collapse-item.vue'
     export default {
-        components: {
-            uniSegmentedControl,
-            uniSection,
-            uniList,
-            uniListItem,
-            uniIcons,
-            uniCollapse,
-            uniCollapseItem
-        },
+        components: {},
         data() {
             return {
                 items: ['状态概览', '网络信息', '服务状态', '系统信息', '硬件信息'],

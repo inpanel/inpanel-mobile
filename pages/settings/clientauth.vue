@@ -1,5 +1,5 @@
 <template>
-    <!-- 设置服务器授权信息 -->
+    <!-- 设置客户端授权信息 -->
     <view class="content no-padding">
         <view class="input-group">
             <view class="input-row border">
@@ -15,20 +15,17 @@
                 <m-input type="password" clearable displayable v-model="access_token" placeholder="服务器口令"></m-input>
             </view>
         </view>
-        <view class="btn-row">
-            <button type="primary" class="primary" @tap="save">保存</button>
-            <button type="primary" class="primary" @tap="clear">清除</button>
+        <view class="uni-padding-wrap uni-common-mt">
+            <button type="primary" @tap="save">保存</button>
+            <button type="default" @tap="clear">清除</button>
         </view>
     </view>
 </template>
 
 <script>
     import { mapState, mapMutations } from 'vuex'
-    import mInput from '../../components/m-input.vue'
+
     export default {
-        components: {
-            mInput
-        },
         data() {
             return {
                 server_addr: '',
@@ -62,7 +59,7 @@
                     return
                 }
 
-                const data = {
+                let data = {
                     addr: this.server_addr,
                     token: this.access_token,
                     port: this.server_port
@@ -71,8 +68,15 @@
                 uni.showToast({
                     title: '授权信息设置成功'
                 })
-                uni.navigateBack({
-                    delta: 1
+                uni.hideToast()
+                // if (this.$route.from) {
+                //     uni.navigateBack({
+                //         delta: 1
+                //     })
+                // } else {
+                // }
+                uni.reLaunch({
+                    url: '/pages/main/index'
                 })
             },
             clear () {

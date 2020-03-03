@@ -222,6 +222,11 @@ form {
     flex: 1;
 }
 
+uni-button {
+    margin-top: 32upx;
+    margin-bottom: 32upx;
+}
+
 radio-group,
 checkbox-group {
     width: 100%;

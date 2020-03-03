@@ -21,14 +21,14 @@
                     <uni-list-item title="远程控制" rightText="右侧文字" />
                 </navigator>
                 <navigator url="/pages/settings/upversion" open-type="navigate">
-                    <uni-list-item title="版本升级" />
+                    <uni-list-item title="版本升级" rightText="升级 InPanel" />
                 </navigator>
-                <uni-list-item title="重启服务" @tap="bindRestart" />
+                <uni-list-item title="重启服务" @tap="bindRestart" rightText="重启 InPanel 服务" />
             </uni-list>
         </view>
         <view class="center-list">
             <uni-list>
-                <navigator url="/pages/about/index" open-type="navigate">
+                <navigator url="/pages/settings/about" open-type="navigate">
                     <uni-list-item title="关于" />
                 </navigator>
                 <navigator url="/pages/feedback/index" open-type="navigate">
@@ -38,8 +38,8 @@
         </view>
         <view class="center-list">
             <uni-list>
-                <navigator url="/pages/settings/settings" open-type="navigate">
-                    <uni-list-item title="服务器授权设置" />
+                <navigator url="/pages/settings/clientauth" open-type="navigate">
+                    <uni-list-item title="客户端授权" />
                 </navigator>
             </uni-list>
         </view>
@@ -48,17 +48,7 @@
 
 <script>
     import { mapState, mapMutations } from 'vuex'
-    import uniSection from '@/components/uni-section/uni-section.vue'
-    import uniList from '@/components/uni-list/uni-list.vue'
-    import uniListItem from '@/components/uni-list-item/uni-list-item.vue'
-    import uniIcons from "@/components/uni-icons/uni-icons.vue"
     export default {
-        components: {
-            uniSection,
-            uniList,
-            uniListItem,
-            uniIcons
-        },
         data() {
             return {
                 login: false,
@@ -72,7 +62,7 @@
             ...mapMutations(['server_save', 'server_clear']),
             toAbout() {
                 uni.navigateTo({
-                    url: '/pages/about/index'
+                    url: '/pages/settings/about'
                 })
             },
             bindRestart() {

@@ -1,8 +1,8 @@
 .DS_Store
 */.DS_Store
 node_modules
-/dist
-/unpackage
+*/dist
+unpackage/resources
 
 # Log files
 npm-debug.log*

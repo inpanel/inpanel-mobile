@@ -16,10 +16,6 @@
 </template>
 
 <script>
-    import uniList from '@/components/uni-list/uni-list.vue'
-    import uniListItem from '@/components/uni-list-item/uni-list-item.vue'
-    import uniCollapse from '@/components/uni-collapse/uni-collapse.vue'
-    import uniCollapseItem from '@/components/uni-collapse-item/uni-collapse-item.vue'
     export default {
         data() {
             return {
@@ -149,12 +145,6 @@
                     }]
                 }]
             }
-        },
-        components: {
-            uniCollapse,
-            uniCollapseItem,
-            uniList,
-            uniListItem
         },
         onLoad() {
 

@@ -17,23 +17,24 @@
                 }
             }
         },
+        created() {},
         onShow: function() {
             console.log('App Show');
             if (!this.hasLogin) {
                 uni.showModal({
-                    title: '服务器授权设置',
-                    content: '需要设置服务器授权信息才能继续',
+                    title: '客户端设置',
+                    content: '需要设置授权信息才能继续操作',
                     showCancel: !this.forcedLogin,
                     success: (res) => {
                         if (res.confirm) {
                             if (this.forcedLogin) {
                                 // 如果需要强制登录，使用reLaunch方式
                                 uni.reLaunch({
-                                    url: '/pages/settings/settings'
+                                    url: '/pages/settings/clientauth'
                                 })
                             } else {
                                 uni.navigateTo({
-                                    url: '/pages/settings/settings'
+                                    url: '/pages/settings/clientauth'
                                 })
                             }
                         }
@@ -50,7 +51,8 @@
 <style>
     /* 头条小程序需要把 iconfont 样式放到组件外 */
     @import "components/m-icon/m-icon.css";
-    @import './common/uni.css';
+    @import './assets/css/uni.css';
+
     /*每个页面公共css */
     page {
         min-height: 100%;
@@ -165,10 +167,6 @@
     .btn-row {
         margin-top: 25px;
         padding: 10px;
-    }
-
-    button.primary {
-        background-color: #0faeff;
     }
 
     .text-center {
