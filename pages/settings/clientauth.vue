@@ -4,15 +4,15 @@
         <view class="input-group">
             <view class="input-row border">
                 <text class="title">地址：</text>
-                <m-input type="text" clearable v-model="server_addr" placeholder="服务器地址"></m-input>
+                <uni-minput type="text" clearable v-model="server_addr" placeholder="服务器地址"></uni-minput>
             </view>
             <view class="input-row">
                 <text class="title">端口：</text>
-                <m-input type="text" clearable v-model="server_port" placeholder="服务器端口"></m-input>
+                <uni-minput type="text" clearable v-model="server_port" placeholder="服务器端口"></uni-minput>
             </view>
             <view class="input-row border">
                 <text class="title">授权码：</text>
-                <m-input type="password" clearable displayable v-model="access_token" placeholder="服务器口令"></m-input>
+                <uni-minput type="password" clearable displayable v-model="access_token" placeholder="服务器口令"></uni-minput>
             </view>
         </view>
         <view class="uni-padding-wrap uni-common-mt">

@@ -18,13 +18,13 @@
                 <view class="source-list">
                     <view class="source-cell">
                         <text space="nbsp">作者：</text>
-                        <u-link class="link" href="https://github.com/doudoudzj" text="doudoudzj"></u-link>
+                        <uni-ulink class="link" href="https://github.com/doudoudzj" text="doudoudzj"></uni-ulink>
                     </view>
                 </view>
                 <view class="source-list">
                     <view class="source-cell">
                         <text space="nbsp">GitHub：</text>
-                        <u-link class="link" href="https://github.com/inpanel/inpanel-mobile" text="https://github.com/inpanel/inpanel-mobile"></u-link>
+                        <uni-ulink class="link" href="https://github.com/inpanel/inpanel-mobile" text="https://github.com/inpanel/inpanel-mobile"></uni-ulink>
                     </view>
                 </view>
             </view>

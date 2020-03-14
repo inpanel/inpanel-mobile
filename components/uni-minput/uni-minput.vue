@@ -4,20 +4,22 @@
             :password="type==='password'&&!showPassword" @focus="onFocus" @blur="onBlur" />
         <!-- 优先显示密码可见按钮 -->
         <view v-if="clearable&&!displayable&&value.length" class="m-input-icon">
-            <m-icon color="#666666" type="clear" @click="clear"></m-icon>
+            <uni-micon color="#666666" type="clear" @click="clear"></uni-micon>
         </view>
         <view v-if="displayable" class="m-input-icon">
-            <m-icon :style="{color:showPassword?'#666666':'#cccccc'}" type="eye" @click="display"></m-icon>
+            <uni-icons :style="{color:showPassword?'#666666':'#cccccc'}" type="eye" @click="display"></uni-icons>
         </view>
     </view>
 </template>
 
 <script>
-    import mIcon from './m-icon/m-icon.vue'
+    import mIcon from '../uni-micon/uni-micon.vue'
+    import uniIcons from '../uni-icons/uni-icons.vue'
 
     export default {
         components: {
-            mIcon
+            'uni-micon': mIcon,
+            'uni-icons': uniIcons
         },
         props: {
             /**

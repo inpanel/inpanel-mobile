@@ -11,7 +11,7 @@
      * @example * <u-link href="https://ext.dcloud.net.cn" text="https://ext.dcloud.net.cn" :inWhiteList="true"></u-link>
      */
     export default {
-        name: 'u-link',
+        name: 'uni-ulink',
         props: {
             href: {
                 type: String,
